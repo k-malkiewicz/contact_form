@@ -29,21 +29,22 @@ export class ContactFormComponent {
     }, {
       updateOn: 'submit'
     });
-
-    console.log(this.contactForm)
   }
 
   validateForm(): void {
+    this.contactFormSubmitted = true;
     if (this.contactForm.valid) {
       this.successToastService!.isFormValid = true;
-      setTimeout(() => this.resetForm(), 2000);
+      this.contactFormSubmitted = false;
+      this.resetForm();
     }
   }
 
   resetForm() {
     this.contactForm?.reset();
-    this.successToastService!.isFormValid = false;
-    this.contactFormSubmitted = false;
+    setTimeout(() => {
+      this.successToastService!.isFormValid = false;
+    }, 4500);
   }
 
   get firstName() {

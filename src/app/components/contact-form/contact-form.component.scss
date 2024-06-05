@@ -6,8 +6,8 @@ $clr-error: rgba(215, 60, 60, 1);
 .controls_wrapper_double,
 fieldset > div {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
 }
 
 fieldset > div {
@@ -64,7 +64,6 @@ fieldset {
 }
 
 .radio_input_wrapper {
-    margin-bottom: 10px;
     padding: 14px 25px;
     outline: none;
     font-size: 1.125rem;
@@ -88,4 +87,15 @@ fieldset {
 .errors_wrapper {
     color: $clr-error;
     margin: 10px 0 2px;
+}
+
+fieldset + .errors_wrapper {
+    margin-top: 18px;
+}
+
+@media(max-width: 650px) {
+    .controls_wrapper_double,
+    fieldset > div {
+        grid-template-columns: 100%;
+    }
 }
