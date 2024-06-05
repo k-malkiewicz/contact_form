@@ -1,1 +1,99 @@
-<p>contact-form works!</p>
+<app-success-toast></app-success-toast>
+<form action="#" [formGroup]="contactForm" #form="ngForm" (submit)="validateForm(); contactFormSubmitted = true">
+    <h1>Contact us</h1>
+    <div class="controls_wrapper_double">
+        <div class="form_control">
+            <label for="firstName">
+                First name <span class="required_symbol">*</span>
+            </label>
+            <input type="text" name="firstName" id="firstName" formControlName="firstName" [class.error]="firstName.invalid && contactFormSubmitted" required>
+            @if (firstName.invalid && contactFormSubmitted) {
+                <div class="errors_wrapper">
+                    @if (firstName.errors?.['required']) {
+                        <span>This field is required</span>
+                    }
+                </div>
+            }
+        </div>
+        <div class="form_control">
+            <label for="lastName">
+                Last name <span class="required_symbol">*</span>
+            </label>
+            <input type="text" name="lastName" id="lastName" formControlName="lastName" [class.error]="lastName.invalid && contactFormSubmitted" required>
+            @if (lastName.invalid && contactFormSubmitted) {
+                <div class="errors_wrapper">
+                    @if (lastName.errors?.['required']) {
+                        <span>This field is required</span>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="emailAddress">
+            Email address <span class="required_symbol">*</span>
+        </label>
+        <input type="email" name="emailAddress" id="emailAddress" formControlName="emailAddress" [class.error]="emailAddress.invalid && contactFormSubmitted" required>
+        @if (emailAddress.invalid && contactFormSubmitted) {
+            <div class="errors_wrapper">
+                @if (emailAddress.errors?.['required']) {
+                    <span>This field is required</span>
+                }
+                @if (emailAddress.errors?.['email']) {
+                    <span>Please enter a valid email address</span>
+                }
+            </div>
+        }
+    </div>
+    <fieldset>
+        <legend>
+            Query type <span class="required_symbol">*</span>
+        </legend>
+        <div>
+            <div class="radio_input_wrapper">
+                <input type="radio" name="queryType" id="generalEnquiry" value="General enquiry" formControlName="queryType">
+                <label for="generalEnquiry">
+                    General enquiry
+                </label>
+            </div>
+            <div class="radio_input_wrapper">
+                <input type="radio" name="queryType" id="supportRequest" value="Support request" formControlName="queryType">
+                <label for="supportRequest">
+                    Support request
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    @if (queryType.invalid && contactFormSubmitted) {
+        <div class="errors_wrapper">
+            @if (queryType.errors?.['required']) {
+                <span>Please select a query type</span>
+            }
+        </div>
+    }
+    <div class="form_control">
+        <label for="message">
+            Message <span class="required_symbol">*</span>
+        </label>
+        <textarea name="message" id="message" formControlName="message" [class.error]="message.invalid && contactFormSubmitted" required></textarea>
+        @if (message.invalid && contactFormSubmitted) {
+            <div class="errors_wrapper">
+                @if (message.errors?.['required']) {
+                    <span>This field is required</span>
+                }
+            </div>
+        }
+    </div>
+    <div class="checkbox_input_wrapper">
+        <input type="checkbox" name="consent" id="consent" value="consent" formControlName="consent" required>
+        <label for="consent">I consent to being contacted by the team</label>
+    </div>
+    @if (consent.invalid && contactFormSubmitted) {
+        @if (consent.errors?.['required']) {
+            <div class="errors_wrapper">
+                <span>To submit this form, please consent to being contacted</span>
+            </div>
+        }
+    }
+    <button class="submit_btn">Submit</button>
+</form>

@@ -1,0 +1,91 @@
+$bg-radio-btn-checked: rgba(224, 241, 231, 1);
+$bg-submit-btn: rgba(12, 125, 105, 1);
+$bg-submit-btn-hover: rgba(6, 63, 54, 1);
+$clr-error: rgba(215, 60, 60, 1);
+
+.controls_wrapper_double,
+fieldset > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+fieldset > div {
+    margin-top: 16px;
+}
+
+.radio_input_wrapper,
+.checkbox_input_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    label {
+        margin: 0;
+    }
+}
+
+.checkbox_input_wrapper {
+    margin-top: 42px;
+    padding-left: 4px;
+}
+
+.controls_wrapper_double {
+    margin-top: 5px;
+}
+
+.form_control {
+    display: flex;
+    flex-direction: column;
+    label {
+        text-transform: capitalize;
+    }
+}
+
+.form_control,
+fieldset {
+    margin-top: 26px;
+}
+
+.required_symbol {
+    color: rgba(12, 125, 105, 1);
+    margin-left: 6px;
+}
+
+.submit_btn {
+    margin-top: 42px;
+    padding: 18px 0;
+    background: $bg-submit-btn;
+    color: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    font-size: 1.125rem;
+    &:hover {
+        background: $bg-submit-btn-hover;
+    }
+}
+
+.radio_input_wrapper {
+    margin-bottom: 10px;
+    padding: 14px 25px;
+    outline: none;
+    font-size: 1.125rem;
+    position: relative;
+    z-index: 1;
+    label::before {
+        content: '';
+        background: transparent;
+        border: 1px solid rgba(135, 163, 166, 1);
+        border-radius: 8px;
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+    }
+    input:checked + label::before {
+        background: $bg-radio-btn-checked;
+        border-color: rgba(12, 125, 105, 1);
+    }
+}
+
+.errors_wrapper {
+    color: $clr-error;
+    margin: 10px 0 2px;
+}
