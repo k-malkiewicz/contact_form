@@ -20,6 +20,7 @@ body {
 }
 
 main {
+    padding: 0 12px;
     display: grid;
     grid-template-columns: minmax(0, 735px);
     justify-content: center;
@@ -105,5 +106,16 @@ input[type=radio] {
         background: url('./assets/images/icon-radio-selected.svg');
         background-size: cover;
         border: none;
+    }
+}
+
+@media(max-width: 450px) {
+    form {
+        margin: 32px 0;
+        padding: 25px;
+    }
+
+    textarea {
+        min-height: 240px;
     }
 }
