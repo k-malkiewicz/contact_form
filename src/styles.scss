@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+$bg-body: rgba(224, 241, 231, 1);
+$bg-form: rgba(255, 255, 255, 1);
+$clr-accent-1: rgba(43, 66, 70, 1);
+$clr-accent-2: rgba(12, 125, 105, 1);
+$clr-accent-3: rgba(135, 163, 166, 1);
+$clr-error: rgba(215, 60, 60, 1);
+$font-family: "Karla", sans-serif;
+
+*,
+*::before,
+*::after {
+    font-family: $font-family;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: $bg-body;
+    color: $clr-accent-1;
+}
+
+main {
+    display: grid;
+    grid-template-columns: minmax(0, 735px);
+    justify-content: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+form {
+    margin: 130px 0;
+    padding: 40px;
+    background: $bg-form;
+    border-radius: 16px;
+}
+
+button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+label {
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    legend {
+        padding: 0;
+        text-transform: capitalize;
+    }
+}
+
+input[type=text],
+input[type=email],
+textarea {
+    padding: 14px 25px;
+    outline: none;
+    border: 1px solid $clr-accent-3;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    &:focus {
+        border-color: $clr-accent-2;
+    }
+    &.error {
+        border-color: $clr-error;
+    }
+}
+
+textarea {
+    min-height: 105px;
+    resize: none;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    appearance: none;
+    width: 18px;
+    aspect-ratio: 1;
+    margin: 0;
+}
+
+input[type=checkbox] {
+    border: 1px solid $clr-accent-3;
+    &:checked {
+        background: url('./assets/images/icon-checkbox-check.svg');
+        background-size: cover;
+        border: none;
+    }
+}
+
+input[type=radio] {
+    border: 1px solid $clr-accent-1;
+    border-radius: 50%;
+    &:checked {
+        background: url('./assets/images/icon-radio-selected.svg');
+        background-size: cover;
+        border: none;
+    }
+}
