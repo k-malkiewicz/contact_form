@@ -1,1 +1,7 @@
-<p>success-toast works!</p>
+<div class="success_toast" [class.visible]="successToastService.isFormValid">
+    <div>
+        <img src="../../../assets/images/icon-success-check.svg" alt="">
+        <span>Message sent!</span>
+    </div>
+    <p>Thanks for completing the form. We'll be in touch soon!</p>
+</div>

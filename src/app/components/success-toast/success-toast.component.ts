@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { SuccessToastService } from '../../services/success-toast.service';
 
 @Component({
   selector: 'app-success-toast',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './success-toast.component.scss'
 })
 export class SuccessToastComponent {
-
+  constructor(
+    public successToastService: SuccessToastService
+  ) {}
 }
