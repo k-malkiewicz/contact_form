@@ -7,7 +7,7 @@ $clr-error: rgba(215, 60, 60, 1);
 fieldset > div {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 0 16px;
 }
 
 .controls_wrapper_double {
@@ -16,6 +16,7 @@ fieldset > div {
 
 fieldset > div {
     margin-top: 16px;
+    gap: 16px;
 }
 
 .radio_input_wrapper,
