@@ -7,7 +7,11 @@ $clr-error: rgba(215, 60, 60, 1);
 fieldset > div {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 16px;
+    gap: 16px;
+}
+
+.controls_wrapper_double {
+    margin-top: 5px;
 }
 
 fieldset > div {
@@ -27,10 +31,6 @@ fieldset > div {
 .checkbox_input_wrapper {
     margin-top: 42px;
     padding-left: 4px;
-}
-
-.controls_wrapper_double {
-    margin-top: 5px;
 }
 
 .form_control {
@@ -97,5 +97,5 @@ fieldset + .errors_wrapper {
     .controls_wrapper_double,
     fieldset > div {
         grid-template-columns: 100%;
-    }
+    }    
 }

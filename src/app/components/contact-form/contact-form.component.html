@@ -1,14 +1,14 @@
 <app-success-toast></app-success-toast>
-<form action="#" [formGroup]="contactForm" #form="ngForm" (submit)="validateForm()">
+<form action="#" [formGroup]="contactForm" (ngSubmit)="validateForm()">
     <h1>Contact us</h1>
     <div class="controls_wrapper_double">
         <div class="form_control">
             <label for="firstName">
-                First name <span class="required_symbol">*</span>
+                First name <span class="required_symbol" aria-hidden="true">*</span>
             </label>
-            <input type="text" name="firstName" id="firstName" formControlName="firstName" [class.error]="firstName.invalid && contactFormSubmitted" required>
+            <input #firstNameInput type="text" name="firstName" id="firstName" formControlName="firstName" [class.error]="firstName.invalid && contactFormSubmitted" aria-required="true" [attr.aria-invalid]="firstName.invalid && contactFormSubmitted" [attr.aria-describedby]="firstName.invalid && contactFormSubmitted ? 'firstNameError' : null">
             @if (firstName.invalid && contactFormSubmitted) {
-                <div class="errors_wrapper">
+                <div class="errors_wrapper" id="firstNameError">
                     @if (firstName.errors?.['required']) {
                         <span>This field is required</span>
                     }
@@ -17,11 +17,11 @@
         </div>
         <div class="form_control">
             <label for="lastName">
-                Last name <span class="required_symbol">*</span>
+                Last name <span class="required_symbol" aria-hidden="true">*</span>
             </label>
-            <input type="text" name="lastName" id="lastName" formControlName="lastName" [class.error]="lastName.invalid && contactFormSubmitted" required>
+            <input #lastNameInput type="text" name="lastName" id="lastName" formControlName="lastName" [class.error]="lastName.invalid && contactFormSubmitted" aria-required="true" [attr.aria-invalid]="lastName.invalid && contactFormSubmitted" [attr.aria-describedby]="firstName.invalid && contactFormSubmitted ? 'lastNameError' : null">
             @if (lastName.invalid && contactFormSubmitted) {
-                <div class="errors_wrapper">
+                <div class="errors_wrapper" id="lastNameError">
                     @if (lastName.errors?.['required']) {
                         <span>This field is required</span>
                     }
@@ -31,11 +31,11 @@
     </div>
     <div class="form_control">
         <label for="emailAddress">
-            Email address <span class="required_symbol">*</span>
+            Email address <span class="required_symbol" aria-hidden="true">*</span>
         </label>
-        <input type="email" name="emailAddress" id="emailAddress" formControlName="emailAddress" [class.error]="emailAddress.invalid && contactFormSubmitted" required>
+        <input #emailAddressInput type="email" name="emailAddress" id="emailAddress" formControlName="emailAddress" [class.error]="emailAddress.invalid && contactFormSubmitted" aria-required="true" [attr.aria-invalid]="emailAddress.invalid && contactFormSubmitted" [attr.aria-describedby]="emailAddress.invalid && contactFormSubmitted ? 'emailAddressError' : null">
         @if (emailAddress.invalid && contactFormSubmitted) {
-            <div class="errors_wrapper">
+            <div class="errors_wrapper" id="emailAddressError">
                 @if (emailAddress.errors?.['required']) {
                     <span>This field is required</span>
                 }
@@ -45,27 +45,23 @@
             </div>
         }
     </div>
-    <fieldset>
+    <fieldset role="radiogroup" aria-required="true" [attr.aria-describedby]="queryType.invalid && contactFormSubmitted ? 'queryTypeError' : null">
         <legend>
-            Query type <span class="required_symbol">*</span>
+            Query type <span class="required_symbol" aria-hidden="true">*</span>
         </legend>
         <div>
             <div class="radio_input_wrapper">
-                <input type="radio" name="queryType" id="generalEnquiry" value="General enquiry" formControlName="queryType">
-                <label for="generalEnquiry">
-                    General enquiry
-                </label>
+                <input #queryTypeInput type="radio" name="queryType" id="generalEnquiry" value="General enquiry" formControlName="queryType" [attr.aria-invalid]="queryType.invalid && contactFormSubmitted">
+                <label id="generalEnquiryLabel" for="generalEnquiry">General enquiry</label>
             </div>
             <div class="radio_input_wrapper">
-                <input type="radio" name="queryType" id="supportRequest" value="Support request" formControlName="queryType">
-                <label for="supportRequest">
-                    Support request
-                </label>
+                <input type="radio" name="queryType" id="supportRequest" value="Support request" formControlName="queryType" [attr.aria-invalid]="queryType.invalid && contactFormSubmitted">
+                <label id="supportRequestLabel" for="supportRequest">Support request</label>
             </div>
         </div>
-    </fieldset>
+    </fieldset> 
     @if (queryType.invalid && contactFormSubmitted) {
-        <div class="errors_wrapper">
+        <div class="errors_wrapper" id="queryTypeError">
             @if (queryType.errors?.['required']) {
                 <span>Please select a query type</span>
             }
@@ -73,11 +69,11 @@
     }
     <div class="form_control">
         <label for="message">
-            Message <span class="required_symbol">*</span>
+            Message <span class="required_symbol" aria-hidden="true">*</span>
         </label>
-        <textarea name="message" id="message" formControlName="message" [class.error]="message.invalid && contactFormSubmitted" required></textarea>
+        <textarea #messageTextarea name="message" id="message" formControlName="message" [class.error]="message.invalid && contactFormSubmitted" aria-required="true" [attr.aria-invalid]="message.invalid && contactFormSubmitted" [attr.aria-describedby]="message.invalid && contactFormSubmitted ? 'messageError' : null"></textarea>
         @if (message.invalid && contactFormSubmitted) {
-            <div class="errors_wrapper">
+            <div class="errors_wrapper" id="messageError">
                 @if (message.errors?.['required']) {
                     <span>This field is required</span>
                 }
@@ -85,12 +81,12 @@
         }
     </div>
     <div class="checkbox_input_wrapper">
-        <input type="checkbox" name="consent" id="consent" value="consent" formControlName="consent" required>
+        <input #consentCheckbox type="checkbox" name="consent" id="consent" value="consent" formControlName="consent" aria-required="true" [attr.aria-describedby]="consent.invalid && contactFormSubmitted ? 'consentError' : null" [attr.aria-invalid]="consent.invalid && contactFormSubmitted">
         <label for="consent">I consent to being contacted by the team</label>
     </div>
     @if (consent.invalid && contactFormSubmitted) {
         @if (consent.errors?.['required']) {
-            <div class="errors_wrapper">
+            <div class="errors_wrapper" id="consentError">
                 <span>To submit this form, please consent to being contacted</span>
             </div>
         }

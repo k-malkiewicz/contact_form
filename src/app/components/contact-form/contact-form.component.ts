@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { SuccessToastComponent } from "../success-toast/success-toast.component";
 import { SuccessToastService } from '../../services/success-toast.service';
 
@@ -14,9 +14,11 @@ import { SuccessToastService } from '../../services/success-toast.service';
 export class ContactFormComponent {
   contactForm?: any;
   contactFormSubmitted = false;
+  @ViewChildren('firstNameInput, lastNameInput, emailAddressInput, queryTypeInput, messageTextarea, consentCheckbox') inputs!: QueryList<ElementRef>;
 
   constructor(
     private fb: FormBuilder,
+    private renderer: Renderer2,
     public successToastService: SuccessToastService
   ) {
     this.contactForm = this.fb.group({
@@ -37,6 +39,10 @@ export class ContactFormComponent {
       this.successToastService!.isFormValid = true;
       this.contactFormSubmitted = false;
       this.resetForm();
+    } else {
+      setTimeout(() => {
+        this.setFocusOnFirstInvalidInput();
+      }, 0);
     }
   }
 
@@ -45,6 +51,15 @@ export class ContactFormComponent {
     setTimeout(() => {
       this.successToastService!.isFormValid = false;
     }, 4500);
+  }
+
+  setFocusOnFirstInvalidInput() {
+    for (const input of this.inputs.toArray()) {
+      if (input.nativeElement.getAttribute('aria-invalid') === 'true') {
+        this.renderer.selectRootElement(input.nativeElement).focus();
+        break;
+      }
+    }
   }
 
   get firstName() {
