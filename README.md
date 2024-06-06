@@ -1,27 +1,38 @@
-# ContactForm
+<h1 align="center" style="margin: 0">Contact Form</h1>
+<p align="center" style="margin: 0">Solution to the Frontend Mentor challenge</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+<hr style="background: #fff">
 
-## Development server
+<p style="margin-top: -30px">This is a solution to the <a href="https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj">Contact Form challenge on Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.</p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Screenshots
 
-## Code scaffolding
+### Desktop view
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<img src="./src/assets/screenshots/screenshot_desktop.png">
 
-## Build
+### Mobile view
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<img src="./src/assets/screenshots/screenshot_mobile.png">
 
-## Running unit tests
+## Links
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Live Site URL ⇒ https://contact-form-km.netlify.app
 
-## Running end-to-end tests
+## Built with
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Angular v17
+- SCSS
 
-## Further help
+## Features
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Users should be able to:
+
+- Complete the form and see a success toast message upon successful submission
+- Receive form validation messages if:
+  - A required field has been missed
+  - The email address is not formatted correctly
+- Complete the form only using their keyboard
+- Have inputs, error messages, and the success message announced on their screen reader
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
