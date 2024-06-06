@@ -22,7 +22,7 @@ body {
 main {
     padding: 0 12px;
     display: grid;
-    grid-template-columns: minmax(0, 735px);
+    grid-template-columns: minmax(0, 45.9375rem);
     justify-content: center;
 }
 
@@ -70,7 +70,7 @@ textarea {
     border-radius: 8px;
     font-size: 1.125rem;
     &:focus {
-        border-color: $clr-accent-2;
+        border-color: $clr-accent-2 !important;
     }
     &.error {
         border-color: $clr-error;
