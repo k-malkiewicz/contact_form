@@ -3,6 +3,7 @@ import { Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angu
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { SuccessToastComponent } from "../success-toast/success-toast.component";
 import { SuccessToastService } from '../../services/success-toast.service';
+import { emailValidator } from '../../validators/email.validator';
 
 @Component({
     selector: 'app-contact-form',
@@ -24,7 +25,7 @@ export class ContactFormComponent {
     this.contactForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      emailAddress: ['', [Validators.required ,Validators.email]],
+      emailAddress: ['', [Validators.required, emailValidator()]],
       queryType: ['', Validators.required],
       message: ['', Validators.required],
       consent: [false, Validators.requiredTrue]

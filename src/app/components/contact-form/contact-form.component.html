@@ -39,7 +39,7 @@
                 @if (emailAddress.errors?.['required']) {
                     <span>This field is required</span>
                 }
-                @if (emailAddress.errors?.['email']) {
+                @if (emailAddress.errors?.['invalidEmail']) {
                     <span>Please enter a valid email address</span>
                 }
             </div>
