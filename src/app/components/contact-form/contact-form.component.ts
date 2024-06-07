@@ -27,7 +27,7 @@ export class ContactFormComponent {
       emailAddress: ['', [Validators.required ,Validators.email]],
       queryType: ['', Validators.required],
       message: ['', Validators.required],
-      consent: ['', Validators.required]
+      consent: [false, Validators.requiredTrue]
     }, {
       updateOn: 'submit'
     });

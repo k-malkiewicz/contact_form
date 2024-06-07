@@ -81,7 +81,7 @@
         }
     </div>
     <div class="checkbox_input_wrapper">
-        <input #consentCheckbox type="checkbox" name="consent" id="consent" value="consent" formControlName="consent" aria-required="true" [attr.aria-describedby]="consent.invalid && contactFormSubmitted ? 'consentError' : null" [attr.aria-invalid]="consent.invalid && contactFormSubmitted">
+        <input #consentCheckbox type="checkbox" name="consent" id="consent" formControlName="consent" aria-required="true" [attr.aria-describedby]="consent.invalid && contactFormSubmitted ? 'consentError' : null" [attr.aria-invalid]="consent.invalid && contactFormSubmitted">
         <label for="consent">I consent to being contacted by the team</label>
     </div>
     @if (consent.invalid && contactFormSubmitted) {
